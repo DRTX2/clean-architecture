@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="5b409d86-1368-460b-b202-59d15e501a9d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../demo-hexagonal-architecture/src/main/java/com/drtx/demo_hexagonal_architecture/adapters/in/web/MovieController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../demo-hexagonal-architecture/src/main/java/com/drtx/demo_hexagonal_architecture/adapters/out/postgresJPA/MoviesDaoAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../demo-hexagonal-architecture/src/main/java/com/drtx/demo_hexagonal_architecture/adapters/out/postgresJPA/entities/MovieEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../demo-hexagonal-architecture/src/main/java/com/drtx/demo_hexagonal_architecture/adapters/out/postgresJPA/mappers/MovieMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../demo-hexagonal-architecture/src/main/java/com/drtx/demo_hexagonal_architecture/adapters/out/postgresJPA/repositories/MovieRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../demo-hexagonal-architecture/src/main/java/com/drtx/demo_hexagonal_architecture/application/dao/MovieDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../demo-hexagonal-architecture/src/main/java/com/drtx/demo_hexagonal_architecture/application/dto/NewMovieDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../demo-hexagonal-architecture/src/main/java/com/drtx/demo_hexagonal_architecture/application/usecases/MovieUseCase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../demo-hexagonal-architecture/src/main/java/com/drtx/demo_hexagonal_architecture/domain/Movie.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../demo-hexagonal-architecture/src/main/java/com/drtx/demo_hexagonal_architecture/infraestructure/exceptions/MovieAlreadyExistsException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../demo-hexagonal-architecture/src/main/java/com/drtx/demo_hexagonal_architecture/infraestructure/exceptions/MovieNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../demo-hexagonal-architecture/src/main/resources/db/migration/V1__CREATE_MOVIES_TABLE.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Companyms" beforeDir="false" afterPath="$PROJECT_DIR$/../Companyms" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../example/src/main/java/drtx/cleanArchitecture/example/ExampleApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../example/src/main/java/drtx/cleanArchitecture/example/application/dto/UserDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../example/src/main/java/drtx/cleanArchitecture/example/application/service/UserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../example/src/main/java/drtx/cleanArchitecture/example/domain/exception/EmailAlreadyExistsException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../example/src/main/java/drtx/cleanArchitecture/example/domain/exception/InvalidUserDataException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../example/src/main/java/drtx/cleanArchitecture/example/domain/model/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../example/src/main/java/drtx/cleanArchitecture/example/domain/repository/UserRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../example/src/main/java/drtx/cleanArchitecture/example/infrastructure/persistence/UserJpaRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../example/src/main/java/drtx/cleanArchitecture/example/infrastructure/persistence/UserPersistenceEntity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../example/src/main/java/drtx/cleanArchitecture/example/infrastructure/persistence/UserPersistenceRepositoryImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../example/src/main/java/drtx/cleanArchitecture/example/infrastructure/web/UserController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../example/src/main/java/drtx/cleanArchitecture/example/infrastructure/web/exception/ErrorResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../example/src/main/java/drtx/cleanArchitecture/example/infrastructure/web/exception/GlobalExceptionHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../example/src/test/java/drtx/cleanArchitecture/example/application/service/UserServiceTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../example/src/test/java/drtx/cleanArchitecture/example/infrastructure/persistence/UserPersistenceRepositoryImplTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../example/src/test/java/drtx/cleanArchitecture/example/infrastructure/web/UserControllerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jobms" beforeDir="false" afterPath="$PROJECT_DIR$/../jobms" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "DRTX2"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/DRTX2/job-application.git",
+    "accountId": "1d8aeb89-8f83-476c-b5e9-a426bdbf4cb7"
+  }
+}]]></component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 0
+}]]></component>
+  <component name="ProjectId" id="2wYi3tFAdzjn7PnkIhSQiiWMFhb" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "develop",
+    "last_opened_file_path": "/home/david/java-spring/practicas/AmazonProject"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5b409d86-1368-460b-b202-59d15e501a9d" name="Changes" comment="" />
+      <created>1746224711482</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1746224711482</updated>
+    </task>
+    <servers />
+  </component>
+</project>
