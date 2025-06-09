@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @DataJpaTest
 @ExtendWith(SpringExtension.class)
-public class UserPersistenceRepositoryTest {
+public class UserPersistenceRepositoryImplTest {
 
     @Autowired
     private CrudRepository<User, Long> userRepository; // Usa CrudRepository directamente

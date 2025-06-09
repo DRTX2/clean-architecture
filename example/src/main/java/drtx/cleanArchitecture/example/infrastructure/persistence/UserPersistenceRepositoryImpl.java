@@ -5,6 +5,7 @@ import drtx.cleanArchitecture.example.domain.repository.UserRepository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -16,10 +17,17 @@ public class UserPersistenceRepositoryImpl implements UserRepository {
         this.userJpaRepository = userJpaRepository;
     }
 
-
     @Override
     public boolean existsByEmail(String email) {
         return userJpaRepository.existsByEmail(email);
+    }
+
+    @Override
+    public List<User> findAll(){
+        return userJpaRepository.findAll().
+                stream().
+                map(UserPersistenceEntity::toDomain)
+                .toList();
     }
 
     @Override
