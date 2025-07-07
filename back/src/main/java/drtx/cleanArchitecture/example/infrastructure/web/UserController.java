@@ -9,6 +9,8 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,38 +27,48 @@ public class UserController {
     @Operation(summary = "Lista todos los usuarios",
             description = "Devuelve un arreglo con todos los usuarios registrados")
     @GetMapping
-    public List<UserDto> getUsers(){
-        return  userUseCase.findAllUsers();
+    public ResponseEntity<List<UserDto>> getUsers() {
+        var users = userUseCase.findAllUsers();
+        return ResponseEntity.ok(users);
     }
 
     @Operation(summary = "Obtiene un usuario por ID", description = "Retorna el usuario con todos sus datos")
     @GetMapping("/{id}")
-    public UserDto getUser(@PathVariable Long id) {
+    public ResponseEntity<UserDto> getUser(@PathVariable Long id) {
         log.info("GET /users/{}", id);
         var dto = userUseCase.getUserById(id);
         log.info("Respuesta: {}", dto);
-        return dto;
+        return ResponseEntity.ok(dto);
     }
 
     @Operation(summary = "Crea un usuario",
             description = "Recibe un UserCreateDto y devuelve el usuario creado con su ID")
     @PostMapping
-    public UserDto createUser(@Valid @RequestBody UserCreateDto userDTO) { // de paso se valida q no sea nulo
-        return userUseCase.createUser(userDTO);
+    public ResponseEntity<UserDto> createUser(@Valid @RequestBody UserCreateDto userDTO) {
+        var createdUser = userUseCase.createUser(userDTO);
+        return ResponseEntity.status(201).body(createdUser);
     }
 
     @Operation(summary = "Actualiza un usuario",
             description = "Actualiza los datos de un usuario existente por ID")
     @PutMapping("/{idUser}")
-    public UserDto updateUser(@PathVariable Long idUser, @Valid @RequestBody UserCreateDto userDto){
-        return userUseCase.updateUser(idUser, userDto);
+    public ResponseEntity<UserDto> updateUser(@PathVariable Long idUser, @Valid @RequestBody UserCreateDto userDto) {
+        var updatedUser = userUseCase.updateUser(idUser, userDto);
+        return ResponseEntity.ok(updatedUser);
     }
 
     @Operation(summary = "Elimina un usuario",
             description = "Borra el usuario por ID y devuelve el registro eliminado")
     @DeleteMapping("/{id}")
-    public UserDto deleteUser(@PathVariable Long id){
-        return userUseCase.deleteUser(id);
+    public ResponseEntity<UserDto> deleteUser(@PathVariable Long id) {
+        var deletedUser = userUseCase.deleteUser(id);
+        return ResponseEntity.ok(deletedUser);
     }
 
+    @Operation(summary = "Limpia la caché de usuarios")
+    @CacheEvict(value = "users", allEntries = true)
+    @GetMapping("/cache/clear")
+    public ResponseEntity<String> clearUsersCache() {
+        return ResponseEntity.ok("Cache de usuarios eliminada");
+    }
 }
