@@ -10,7 +10,7 @@ services:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     ports:
-      - '5432:5432'
+      - '5433:5432'
     volumes:
       - db-data:/var/lib/postgresql/data
     restart: unless-stopped
@@ -18,8 +18,9 @@ services:
   redis:
     image: redis:7
     container_name: redis
+    env_file: .env
     ports:
-      - '${REDIS_PORT}:${REDIS_PORT}'
+      - '${REDIS_PORT}:6379'  # Importante: dentro del contenedor Redis SIEMPRE usa 6379
     restart: unless-stopped
 
   app:
@@ -30,14 +31,13 @@ services:
     container_name: clean-architecture-example
     env_file: .env
     environment:
-      # Las variables de .env se inyectan aquí
-      SPRING_DATASOURCE_URL: ${SPRING_DATASOURCE_URL}
-      SPRING_DATASOURCE_USERNAME: ${SPRING_DATASOURCE_USERNAME}
-      SPRING_DATASOURCE_PASSWORD: ${SPRING_DATASOURCE_PASSWORD}
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/${POSTGRES_DB}
+      SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER}
+      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD}
 
       SPRING_CACHE_TYPE: ${SPRING_CACHE_TYPE}
-      SPRING_REDIS_HOST: ${SPRING_REDIS_HOST}
-      SPRING_REDIS_PORT: ${SPRING_REDIS_PORT}
+      SPRING_REDIS_HOST: ${REDIS_HOST}
+      SPRING_REDIS_PORT: ${REDIS_PORT}
 
       SPRING_SECURITY_USER_NAME: ${SPRING_SECURITY_USER_NAME}
       SPRING_SECURITY_USER_PASSWORD: ${SPRING_SECURITY_USER_PASSWORD}

@@ -9,25 +9,29 @@ spring:
     driver-class-name: org.postgresql.Driver
 
   jpa:
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: update
     show-sql: true
     properties:
       hibernate:
         format_sql: true
+
   cache:
     type: ${SPRING_CACHE_TYPE}
-    redis:
-      host: ${SPRING_REDIS_HOST} # redis, no localhost, use the service name from docker-compose
-      port: ${SPRING_REDIS_PORT}
-      time-to-live: 600000 # 10 minutes
+
+  redis:
+    time-to-live: 60
+
   security:
     user:
       name: ${SPRING_SECURITY_USER_NAME}
       password: ${SPRING_SECURITY_USER_PASSWORD}
-                # bcrypt hash for 'admin123'
       roles: ${SPRING_SECURITY_USER_ROLES}
+  data:
+    redis:
+      host: ${SPRING_REDIS_HOST}
+      port: ${SPRING_REDIS_PORT}
+
 server:
   port: ${SERVER_PORT}
 
@@ -52,5 +56,6 @@ management:
   metrics:
     enable:
       all: true
+
 springdoc:
   enable-validation: false
