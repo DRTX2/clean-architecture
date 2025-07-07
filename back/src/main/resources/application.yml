@@ -16,7 +16,18 @@ spring:
     properties:
       hibernate:
         format_sql: true
-
+  cache:
+    type: redis
+    redis:
+      host: localhost
+      port: 6379
+      time-to-live: 600000 # 10 minutes
+  security:
+    user:
+      name: admin
+      password: $2b$12$95paHpjy8V/ds4t2u1eSY.VJtoKzqmkPDxQByYvK9jgOHMvp8MYOu
+                # bcrypt hash for 'admin123'
+      roles: ACTUATOR
 server:
   port: 8080
 
@@ -34,7 +45,12 @@ management:
   endpoints:
     web:
       exposure:
-        include: health,info,metrics,loggers
+        include: health,info,metrics,loggers,env,threaddump
   endpoint:
     health:
       show-details: always
+  metrics:
+    enable:
+      all: true
+springdoc:
+  enable-validation: false

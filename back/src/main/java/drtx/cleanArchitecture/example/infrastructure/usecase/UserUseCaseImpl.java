@@ -15,6 +15,7 @@ import org.hibernate.exception.ConstraintViolationException;
 import org.hibernate.service.spi.ServiceException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -37,6 +38,7 @@ public class UserUseCaseImpl implements UserUseCase {
 
     @Override
     @Transactional(readOnly = true)
+    @Cacheable("users")
     public List<UserDto> findAllUsers() {
         return userRepository
                 .findAll()
