@@ -1,6 +1,6 @@
 spring:
   application:
-    name: example
+    name: clean-architecture-example
 
   datasource:
     url: jdbc:postgresql://localhost:5432/clean_architecture
@@ -19,7 +19,7 @@ spring:
   cache:
     type: redis
     redis:
-      host: localhost
+      host: redis # no localhost, use the service name from docker-compose
       port: 6379
       time-to-live: 600000 # 10 minutes
   security:

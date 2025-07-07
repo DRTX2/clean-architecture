@@ -5,5 +5,21 @@ services:
     image: redis:7
     container_name: redis
     ports:
-      - "6379:6379"
+      - '6379:6379'
     restart: unless-stopped
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: clean-architecture-example:latest
+    container_name: clean-architecture-example
+    ports:
+      - '8080:8080'
+    environment:
+      # Configura Spring Boot para que apunte a tu servicio Redis
+      SPRING_REDIS_HOST: redis
+      SPRING_REDIS_PORT: '6379'
+    depends_on:
+      - redis
+    restart: unless-stopped # Docker reiniciará automáticamente el contenedor si se cae, no un reinicio manual
