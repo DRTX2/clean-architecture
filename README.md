@@ -1,83 +1,122 @@
 ## 🧼 Clean Architecture Example – Spring Boot + React (TypeScript)
 
-Un ejemplo simple y práctico de **Clean Architecture**, combinando:
+A simple and practical example of **Clean Architecture**, combining:
 
-* 🧠 **Spring & Spring Boot** (Backend)
+* 🧠 **Spring Boot** (Backend)
 * ⚛️ **React + TypeScript** (Frontend)
 
-Ideal para tutoriales, estudios o aprender buenas prácticas en proyectos **full-stack**.
+Ideal for tutorials, studies, or learning best practices in **full-stack** projects.
 
 ---
 
-### 📁 Estructura del Proyecto
+### 📁 Project Structure
 
 ```
-/backend        → API REST en Spring Boot (Clean Architecture)
-/frontend       → Interfaz hecha con React + TypeScript
-```
+
+/backend        → REST API in Spring Boot (Clean Architecture)
+/frontend       → Interface built with React + TypeScript
+
+````
 
 ---
 
-### 🚀 Tecnologías Usadas
+### 🚀 Technologies Used
 
-#### Backend:
+#### Backend
 
-* Java 21+
-* Spring Boot
-* Spring Web
-* Spring Data JPA
-* H2 / PostgreSQL (configurable)
-* Clean Architecture (Domain, Use Cases, Infra)
+- Java 21+
+- Spring Boot:
+  - Spring Web  
+  - Spring Data JPA  
+  - Spring Security (Basic Auth for Actuator)  
+  - Spring Cache (Redis)  
+  - Spring Actuator (metrics, health, threaddump…)  
+  - Springdoc OpenAPI (Swagger UI)  
+- Hibernate / JPA  
+- PostgreSQL  
+- Redis (cache)  
+- Clean Architecture (Domain, Use Cases, Infra)
 
-#### Frontend:
+#### Frontend
 
-* React
-* TypeScript
-* Vite
-* React Hooks (useState, useEffect, useRef, etc.)
+- React  
+- TypeScript  
+- Vite  
+- React Hooks (`useState`, `useEffect`, `useRef`, etc.)
 
 ---
 
-### 📦 Cómo ejecutar el proyecto
+### 📦 How to Run the Project
 
-#### 1. Clona el repositorio
+#### 1. Clone the repository
 
 ```bash
-git clone https://github.com/DRTX2/clean-architecture;
-cd clean-architecture;
+git clone https://github.com/DRTX2/clean-architecture.git
+cd clean-architecture
+````
 
+#### 2. Configure environment variables
+
+Copy the example and edit if necessary:
+
+```bash
+cp .env.example .env
 ```
 
-#### 2. Backend (Spring Boot)
+#### 3. Start all services with Docker Compose
 
 ```bash
-cd example
-./mvnw spring-boot:run
+docker compose up --build -d   # Builds images and starts the app, Postgres and Redis in background
 ```
 
-Accede a: `http://localhost:8080`
-
-#### 3. Frontend (React + Vite)
+Verify that everything is running:
 
 ```bash
-cd clean
+docker compose ps
+```
+
+Check application logs if needed:
+
+```bash
+docker compose logs -f app
+```
+
+To stop and remove containers and volumes:
+
+```bash
+docker compose down -v
+```
+
+Access the backend at: `http://localhost:8080`
+
+#### 4. Frontend (React + Vite)
+
+```bash
+cd frontend/clean
 npm install
 npm run dev
 ```
 
-Accede a: `http://localhost:5173`
+Access the frontend at: `http://localhost:5173`
 
 ---
 
-### 🧪 Funcionalidades del Ejemplo
+### ⭐ Example Features
 
-* 🔄 Comunicación entre frontend y backend
-* ✅ Principios de Clean Architecture aplicados
-* 📚 Ideal para entender separación de capas
+* 🔄 Frontend ↔ backend communication
+* ✅ Clean Architecture: well-separated layers
+* ⚙️ **Actuator**:
+
+  * `GET /actuator/health`, `metrics`, `loggers`, `threaddump`
+* 📄 **Swagger UI** (Springdoc OpenAPI):
+
+  * UI: `http://localhost:8080/swagger-ui/index.html`
+  * Spec JSON: `http://localhost:8080/v3/api-docs`
+* 🗄️ **Cache** with Redis (`@Cacheable("users")`)
+* 🔒 **Security**: Basic Auth for Actuator (`admin` / bcrypt password)
 
 ---
 
-### ✍️ Autor
+### ✍️ Author
 
-Desarrollado por **David** Ingeniero en Software, apasionado por Java, Spring, PHP, JS y React.
-
+Developed by **David**, Software Engineer, passionate about Java, Spring, PHP, TS and React.
