@@ -3,9 +3,9 @@ spring:
     name: clean-architecture-example
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/clean_architecture
-    username: postgres
-    password: root
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
     driver-class-name: org.postgresql.Driver
 
   jpa:
@@ -17,19 +17,19 @@ spring:
       hibernate:
         format_sql: true
   cache:
-    type: redis
+    type: ${SPRING_CACHE_TYPE}
     redis:
-      host: redis # no localhost, use the service name from docker-compose
-      port: 6379
+      host: ${SPRING_REDIS_HOST} # redis, no localhost, use the service name from docker-compose
+      port: ${SPRING_REDIS_PORT}
       time-to-live: 600000 # 10 minutes
   security:
     user:
-      name: admin
-      password: $2b$12$95paHpjy8V/ds4t2u1eSY.VJtoKzqmkPDxQByYvK9jgOHMvp8MYOu
+      name: ${SPRING_SECURITY_USER_NAME}
+      password: ${SPRING_SECURITY_USER_PASSWORD}
                 # bcrypt hash for 'admin123'
-      roles: ACTUATOR
+      roles: ${SPRING_SECURITY_USER_ROLES}
 server:
-  port: 8080
+  port: ${SERVER_PORT}
 
 logging:
   level:
