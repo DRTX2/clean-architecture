@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:17
+    container_name: postgres-db
+    env_file: .env.prod
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - '5433:5432'
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  redis:
+    image: redis:7
+    container_name: redis
+    restart: unless-stopped
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: clean-architecture-example:latest
+    container_name: clean-architecture-example
+    env_file: .env.prod
+    ports:
+      - '8080:8080'
+    depends_on:
+      - db
+      - redis
+    restart: unless-stopped
+
+volumes:
+  db-data:
